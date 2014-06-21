@@ -5,33 +5,27 @@
   "description": "Cylon adaptor for the Pinoccio mesh-networked microcontroller",
   "homepage": "http://cylonjs.com",
   "bugs": "https://github.com/hybridgroup/cylon-pinoccio/issues",
-
   "author": "The Hybrid Group <cylonjs@hybridgroup.com>",
-
   "repository": {
     "type": "git",
     "url": "https://github.com/hybridgroup/cylon-pinoccio"
   },
-
   "license": "Apache 2.0",
-
   "devDependencies": {
     "sinon-chai": "2.5.0",
-    "chai":       "1.9.1",
-    "mocha":      "1.18.2",
-    "sinon":      "1.9.1",
-    "jshint":     "2.5.0"
+    "chai": "1.9.1",
+    "mocha": "1.18.2",
+    "sinon": "1.9.1",
+    "jshint": "2.5.0"
   },
-
   "peerDependencies": {
-    "cylon":      ">= 0.15.0 < 1",
+    "cylon": ">= 0.15.0 < 1",
     "cylon-gpio": ">= 0.15.0 < 1"
   },
-
   "dependencies": {
-    "restler":     "~3.2.0",
-    "cylon":       "~0.15.0",
-    "cylon-gpio":  "~0.15.0",
-    "eventsource": "~0.1.0"
+    "cylon": "~0.15.0",
+    "cylon-gpio": "~0.15.0",
+    "eventsource": "~0.1.0",
+    "pinoccio-io": "0.0.4"
   }
 }
