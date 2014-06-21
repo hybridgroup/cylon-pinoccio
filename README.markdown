@@ -21,7 +21,7 @@ Install the module with: `npm install cylon-pinoccio`
 
 ## Examples
 
-## Connecting
+### Blink
 
 ```javascript
 var Cylon = require('cylon');
@@ -30,18 +30,34 @@ Cylon.robot({
   connection: { 
   	name: 'pinoccio', 
   	adaptor: 'pinoccio', 
-  	token: '', 
-  	troop: '', 
-  	scout: '' },
-  device: {name: 'pinoccio', driver: 'pinoccio'},
+  	token: '[your token]', 
+  	troop: '[your troop ID]', 
+  	scout: '[your scout ID]' },
+  device: {name: 'led', driver: 'led', pin: 'D5'},
 
   work: function(my) {
-    // provide an example of your module here
+    every((1).second(), my.led.toggle);
   }
 }).start();
 ```
 
-Explain how to connect from the computer to the device here...
+## Connecting
+
+You need to have an access token generated using the Pinoccio cloud. The easiest way to do this is to use curl:
+```
+curl -X POST -v --data 'email=your@email.com&password=yourpassword' https://api.pinocc.io/v1/login
+```
+
+It will return a JSON payload that contains the access token:
+```
+< HTTP/1.1 200 OK
+< content-type: application/json
+< Date: Sat, 21 Jun 2014 16:08:05 GMT
+< Connection: close
+< Transfer-Encoding: chunked
+< 
+{"data":{"token":"thisisthetokenhere","account":1234,"perms":true}}
+```
 
 ## Documentation
 We're busy adding documentation to our web site at http://cylonjs.com/ please check there as we continue to work on Cylon.js
