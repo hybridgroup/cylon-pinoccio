@@ -3,7 +3,7 @@
 var module = source("cylon-pinoccio");
 
 var Adaptor = source('adaptor'),
-    Driver = source('driver');
+    LedDriver = source('pinoccio-led');
 
 var GPIO = require('cylon-gpio');
 
