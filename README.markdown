@@ -27,7 +27,12 @@ Install the module with: `npm install cylon-pinoccio`
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { name: 'pinoccio', adaptor: 'pinoccio' },
+  connection: { 
+  	name: 'pinoccio', 
+  	adaptor: 'pinoccio', 
+  	token: '', 
+  	troop: '', 
+  	scout: '' },
   device: {name: 'pinoccio', driver: 'pinoccio'},
 
   work: function(my) {

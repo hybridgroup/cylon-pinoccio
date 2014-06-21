@@ -5,23 +5,43 @@ var module = source("cylon-pinoccio");
 var Adaptor = source('adaptor'),
     Driver = source('driver');
 
+var GPIO = require('cylon-gpio');
+
 describe("Cylon.Pinoccio", function() {
-  describe("#register", function() {
-    it("should be a function", function() {
-      expect(module.register).to.be.a('function');
+  describe("driver", function() {
+    before(function() {
+      stub(GPIO, 'driver').returns({});
+    });
+
+    after(function() {
+      GPIO.driver.restore();
+    });
+
+    it("creates a driver through the GPIO module", function() {
+      var params = { name: 'led' };
+      module.driver(params);
+      expect(GPIO.driver).to.be.calledOnce;
     });
   });
 
-  describe("#driver", function() {
-    it("returns an instance of the Driver", function() {
-      var args = { device: {} };
-      expect(module.driver(args)).to.be.instanceOf(Driver);
-    });
-  });
+  describe("register", function() {
+    var bot = { registerAdaptor: spy(), registerDriver: spy() };
 
-  describe("#adaptor", function() {
-    it("returns an instance of the Adaptor", function() {
-      expect(module.adaptor()).to.be.instanceOf(Adaptor);
+    before(function() {
+      stub(GPIO, 'register').returns();
+      module.register(bot);
+    });
+
+    after(function() {
+      GPIO.register.restore();
+    });
+
+    it("registers the Pinoccio adaptor", function() {
+      expect(bot.registerAdaptor).to.be.calledWith("cylon-pinoccio", "pinoccio");
+    });
+
+    it("tells GPIO to register itself", function() {
+      expect(GPIO.register).to.be.calledWith(bot);
     });
   });
 });
