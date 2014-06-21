@@ -3,7 +3,7 @@
 Cylon.js (http://cylonjs.com) is a JavaScript framework for robotics and
 physical computing using Node.js
 
-This repository contains the Cylon adaptor for the [Pinoccio](https://pinocc.io/) mesh-networked microcontroller.
+This repository contains the Cylon adaptor for the [Pinoccio](https://pinocc.io/) mesh-networked microcontroller. The implementation uses the [Pinoccio-IO](https://github.com/soldair/pinoccio-io) node module from [@soldair](https://github.com/soldair/). Thank you!
 
 Want to use Ruby on robots? Check out our sister project Artoo (http://artoo.io)
 
