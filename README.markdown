@@ -13,6 +13,8 @@ sister project Gobot (http://gobot.io).
 For more information about Cylon, check out our repo at
 https://github.com/hybridgroup/cylon
 
+[![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-pinoccio.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-pinoccio)
+
 ## Getting Started
 
 Install the module with: `npm install cylon-pinoccio`
