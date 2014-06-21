@@ -1,9 +1,9 @@
 'use strict';
 
-var Pinoccio = source("driver");
+var PinoccioLed = source("pinoccio-led");
 
-describe("Cylon.Drivers.Pinoccio", function() {
-  var driver = new Pinoccio({
+describe("Cylon.Drivers.PinoccioLed", function() {
+  var driver = new PinoccioLed({
     device: { connection: 'connect' }
   });
 
