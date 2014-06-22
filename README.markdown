@@ -41,6 +41,35 @@ Cylon.robot({
 }).start();
 ```
 
+### Built-In Features
+
+You can also access the built-in features of the Pinoccio such as the LED and Power status:
+
+```javascript
+var Cylon = require('cylon');
+
+Cylon.robot({
+  connection: { 
+    name: 'pinoccio', 
+    adaptor: 'pinoccio', 
+    token: '[your token]', 
+    troop: '[your troop ID]', 
+    scout: '[your scout ID]' },
+  device: {name: 'led', driver: 'pinoccio-led'},
+  device: {name: 'power', driver: 'pinoccio-power'},
+
+  work: function(my) {
+    every((1).second(), 
+    my.led.toggle);
+  }
+}).start();
+```
+
+We currently have drivers for the following built-in Pinoccio devices:
+
+- LED
+- Power
+
 ## Connecting
 
 You need to have an access token generated using the Pinoccio cloud. The easiest way to do this is to use curl:
