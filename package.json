@@ -1,6 +1,6 @@
 {
   "name": "cylon-pinoccio",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "lib/cylon-pinoccio.js",
   "description": "Cylon adaptor for the Pinoccio mesh-networked microcontroller",
   "homepage": "http://cylonjs.com",
