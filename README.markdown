@@ -27,13 +27,15 @@ Install the module with: `npm install cylon-pinoccio`
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { 
-  	name: 'pinoccio', 
-  	adaptor: 'pinoccio', 
-  	token: '[your token]', 
-  	troop: '[your troop ID]', 
-  	scout: '[your scout ID]' },
-  device: {name: 'led', driver: 'led', pin: 'D5'},
+  connection: {
+    name: 'pinoccio',
+    adaptor: 'pinoccio',
+    token: '[your token]',
+    troop: '[your troop ID]',
+    scout: '[your scout ID]'
+  },
+
+  device: { name: 'led', driver: 'led', pin: 'D5' },
 
   work: function(my) {
     every((1).second(), my.led.toggle);
@@ -49,17 +51,17 @@ You can also access the built-in features of the Pinoccio such as the LED and Po
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: { 
-    name: 'pinoccio', 
-    adaptor: 'pinoccio', 
-    token: '[your token]', 
-    troop: '[your troop ID]', 
+  connection: {
+    name: 'pinoccio',
+    adaptor: 'pinoccio',
+    token: '[your token]',
+    troop: '[your troop ID]',
     scout: '[your scout ID]' },
   device: {name: 'led', driver: 'pinoccio-led'},
   device: {name: 'power', driver: 'pinoccio-power'},
 
   work: function(my) {
-    every((1).second(), 
+    every((1).second(),
     my.led.toggle);
   }
 }).start();
@@ -84,7 +86,7 @@ It will return a JSON payload that contains the access token:
 < Date: Sat, 21 Jun 2014 16:08:05 GMT
 < Connection: close
 < Transfer-Encoding: chunked
-< 
+<
 {"data":{"token":"thisisthetokenhere","account":1234,"perms":true}}
 ```
 
