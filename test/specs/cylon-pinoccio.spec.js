@@ -81,12 +81,12 @@ describe("Cylon.Pinoccio", function() {
 
     context("with any other name", function() {
       beforeEach(function() {
-        opts.name = 'led'
+        opts.name = 'direct-pin'
       });
 
       it("defers to GPIO#driver", function() {
         var driver = module.driver(opts)
-        expect(driver.constructor.name).to.be.eql("Led");
+        expect(driver.constructor.name).to.be.eql("DirectPin");
       });
     });
   });
