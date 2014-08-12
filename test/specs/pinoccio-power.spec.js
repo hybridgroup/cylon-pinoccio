@@ -19,13 +19,10 @@ describe("Cylon.Drivers.PinoccioPower", function() {
   });
 
   describe("#commands", function() {
-    it("is an array of Power commands", function() {
-      var commands = power.commands;
-      expect(commands).to.be.an('array');
-
-      commands.forEach(function(command) {
-        expect(command).to.be.a('string');
-      });
+    it("is an object containing Power commands", function() {
+      for (var c in power.commands) {
+        expect(power.commands[c]).to.be.a('function');
+      }
     });
   });
 
