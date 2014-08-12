@@ -21,13 +21,10 @@ describe("Pinoccio-LED", function() {
   });
 
   describe("#commands", function() {
-    it("is an array of LED commands", function() {
-      var commands = led.commands;
-      expect(commands).to.be.an('array');
-
-      commands.forEach(function(command) {
-        expect(command).to.be.a('string');
-      });
+    it("is an object containing LED commands", function() {
+      for (var c in led.commands) {
+        expect(led.commands[c]).to.be.a('function');
+      }
     });
   });
 
