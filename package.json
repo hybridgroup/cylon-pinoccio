@@ -1,6 +1,6 @@
 {
   "name": "cylon-pinoccio",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "lib/cylon-pinoccio.js",
   "description": "Cylon adaptor for the Pinoccio mesh-networked microcontroller",
   "homepage": "http://cylonjs.com",
@@ -19,12 +19,12 @@
     "jshint": "2.5.0"
   },
   "peerDependencies": {
-    "cylon": ">= 0.16.0 < 1",
-    "cylon-gpio": ">= 0.16.0 < 1"
+    "cylon": ">= 0.18.0 < 1",
+    "cylon-gpio": ">= 0.18.0 < 1"
   },
   "dependencies": {
-    "cylon": "~0.16.0",
-    "cylon-gpio": "~0.16.0",
+    "cylon": "~0.18.0",
+    "cylon-gpio": "~0.18.0",
     "eventsource": "~0.1.0",
     "pinoccio-io": "0.0.4"
   }
