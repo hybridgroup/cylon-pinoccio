@@ -56,7 +56,7 @@ describe("Cylon.Pinoccio", function() {
     var opts;
 
     beforeEach(function() {
-      opts = { name: '', device: {} };
+      opts = { name: '', device: { connection: {} } };
     });
 
     context("with a 'name' of 'pinoccio-led'", function() {
