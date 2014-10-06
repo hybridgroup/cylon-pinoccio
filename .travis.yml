@@ -1,4 +1,8 @@
-language: "node_js"
+language: node_js
 node_js: '0.10'
-before_script: 'if [[ "$TRAVIS_BRANCH" != "master" ]]; then npm install git://github.com/hybridgroup/cylon.git#dev; fi'
-script: "make"
+install:
+  - npm install
+  - npm install -g istanbul codeclimate-test-reporter
+script:
+  - make cover
+  - CODECLIMATE_REPO_TOKEN=b7ca04d1082b1fbe2a0a6c6676ab4c270d1e4093a4fbd34f8678e775264edf9c codeclimate < coverage/lcov.info
