@@ -4,7 +4,7 @@ Cylon.robot({
   connection: {
     name: 'pinoccio',
     adaptor: 'pinoccio',
-    token: '4bf1fcf910190ebea20f433b9adefcb9',
+    token: 'SECRET_TOKEN',
     troop: '1',
     scout: '1'
   },
