@@ -12,37 +12,21 @@ var Drivers = {
 var GPIO = require('cylon-gpio');
 
 describe("Cylon.Pinoccio", function() {
-  describe("#register", function() {
-    var bot, driver, adaptor;
-
-    beforeEach(function() {
-      bot = {};
-      driver = bot.registerDriver = spy();
-      adaptor = bot.registerAdaptor = spy();
-
-      stub(GPIO, 'register');
-
-      module.register(bot);
+  describe("#adaptors", function() {
+    it('is an array of supplied adaptors', function() {
+      expect(module.adaptors).to.be.eql(['pinoccio']);
     });
+  });
 
-    afterEach(function() {
-      GPIO.register.restore();
+  describe("#drivers", function() {
+    it('is an array of supplied drivers', function() {
+      expect(module.drivers).to.be.eql(['pinoccio-led', 'pinoccio-power']);
     });
+  });
 
-    it("registers the 'pinoccio' adaptor", function() {
-      expect(adaptor).to.be.calledWith('cylon-pinoccio', 'pinoccio');
-    });
-
-    it("registers the 'pinoccio-led' driver", function() {
-      expect(driver).to.be.calledWith('cylon-pinoccio', 'pinoccio-led');
-    });
-
-    it("registers the 'pinoccio-power' driver", function() {
-      expect(driver).to.be.calledWith('cylon-pinoccio', 'pinoccio-power');
-    });
-
-    it("registers the GPIO module with the robot", function() {
-      expect(GPIO.register).to.be.calledWith(bot);
+  describe("#dependencies", function() {
+    it('is an array of supplied dependencies', function() {
+      expect(module.dependencies).to.be.eql(['cylon-gpio']);
     });
   });
 
@@ -56,12 +40,12 @@ describe("Cylon.Pinoccio", function() {
     var opts;
 
     beforeEach(function() {
-      opts = { name: '', device: { connection: {} } };
+      opts = { driver: '', device: { connection: {} } };
     });
 
-    context("with a 'name' of 'pinoccio-led'", function() {
+    context("with a 'driver' of 'pinoccio-led'", function() {
       beforeEach(function() {
-        opts.name = 'pinoccio-led'
+        opts.driver = 'pinoccio-led'
       });
 
       it("creates an instance of the Pinoccio LED driver", function() {
@@ -69,24 +53,13 @@ describe("Cylon.Pinoccio", function() {
       });
     });
 
-    context("with a 'name' of 'pinoccio-power'", function() {
+    context("with a 'driver' of 'pinoccio-power'", function() {
       beforeEach(function() {
-        opts.name = 'pinoccio-power'
+        opts.driver = 'pinoccio-power'
       });
 
       it("creates an instance of the Pinoccio POWER driver", function() {
         expect(module.driver(opts)).to.be.an.instanceOf(Drivers.Power);
-      });
-    });
-
-    context("with any other name", function() {
-      beforeEach(function() {
-        opts.name = 'direct-pin'
-      });
-
-      it("defers to GPIO#driver", function() {
-        var driver = module.driver(opts)
-        expect(driver.constructor.name).to.be.eql("DirectPin");
       });
     });
   });

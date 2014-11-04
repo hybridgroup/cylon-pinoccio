@@ -12,11 +12,9 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
   beforeEach(function() {
     adaptor = new Adaptor({
-      extraParams: {
-        token: 'token',
-        troop: 'troop',
-        scout: 'scout'
-      }
+      token: 'token',
+      troop: 'troop',
+      scout: 'scout'
     })
   });
 
