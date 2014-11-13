@@ -40,7 +40,7 @@ describe("Cylon.Pinoccio", function() {
     var opts;
 
     beforeEach(function() {
-      opts = { driver: '', device: { connection: {} } };
+      opts = { driver: '', adaptor: {} };
     });
 
     context("with a 'driver' of 'pinoccio-led'", function() {
