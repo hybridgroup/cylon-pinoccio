@@ -9,7 +9,7 @@ describe("Cylon.Drivers.PinoccioPower", function() {
 
   beforeEach(function() {
     power = new Power({
-      adaptor: { command: spy() }
+      connection: { command: spy() }
     });
   });
 
@@ -27,10 +27,10 @@ describe("Cylon.Drivers.PinoccioPower", function() {
   });
 
   describe("#isCharging", function() {
-    it("tells the adaptor to print whether or not it's charging", function() {
+    it("tells the connection to print whether or not it's charging", function() {
       var callback = spy();
       power.isCharging(callback);
-      expect(power.adaptor.command).to.be.calledWith(
+      expect(power.connection.command).to.be.calledWith(
         'printf("%b", power.ischarging)',
         callback
       );
@@ -38,10 +38,10 @@ describe("Cylon.Drivers.PinoccioPower", function() {
   });
 
   describe("#percent", function() {
-    it("tells the adaptor to print the battery percentage", function() {
+    it("tells the connection to print the battery percentage", function() {
       var callback = spy();
       power.percent(callback);
-      expect(power.adaptor.command).to.be.calledWith(
+      expect(power.connection.command).to.be.calledWith(
         'printf("%d", power.percent)',
         callback
       );
@@ -49,10 +49,10 @@ describe("Cylon.Drivers.PinoccioPower", function() {
   });
 
   describe("#voltage", function() {
-    it("tells the adaptor to print the battery voltage", function() {
+    it("tells the connection to print the battery voltage", function() {
       var callback = spy();
       power.voltage(callback);
-      expect(power.adaptor.command).to.be.calledWith(
+      expect(power.connection.command).to.be.calledWith(
         'printf("%d", power.voltage)',
         callback
       );
@@ -60,24 +60,24 @@ describe("Cylon.Drivers.PinoccioPower", function() {
   });
 
   describe("#enableVcc", function() {
-    it("tells the adaptor to enable VCC on the battery", function() {
+    it("tells the connection to enable VCC on the battery", function() {
       power.enableVcc();
-      expect(power.adaptor.command).to.be.calledWith("power.enable_vcc");
+      expect(power.connection.command).to.be.calledWith("power.enable_vcc");
     });
   });
 
   describe("#disableVcc", function() {
-    it("tells the adaptor to disable VCC on the battery", function() {
+    it("tells the connection to disable VCC on the battery", function() {
       power.disableVcc();
-      expect(power.adaptor.command).to.be.calledWith("power.disable_vcc");
+      expect(power.connection.command).to.be.calledWith("power.disable_vcc");
     });
   });
 
   describe("#report", function() {
-    it("tells the adaptor to report on the battery", function() {
+    it("tells the connection to report on the battery", function() {
       var callback = spy();
       power.report(callback);
-      expect(power.adaptor.command).to.be.calledWith(
+      expect(power.connection.command).to.be.calledWith(
         'printf("%s", power.report)',
         callback
       );
