@@ -37,18 +37,6 @@ describe("Cylon.Adaptors.Pinoccio", function() {
     });
   });
 
-  describe("#commands", function() {
-    it("is an array of Pinoccio commands", function() {
-      var commands = adaptor.commands;
-
-      expect(commands).to.be.an('array');
-
-      commands.forEach(function(command) {
-        expect(command).to.be.a('string');
-      });
-    });
-  });
-
   describe("#connect", function() {
     var callback;
 
