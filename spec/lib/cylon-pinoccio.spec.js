@@ -32,7 +32,7 @@ describe("Cylon.Pinoccio", function() {
 
   describe("#adaptor", function() {
     it("returns a new instance of the Adaptor", function() {
-      expect(module.adaptor()).to.be.an.instanceOf(Adaptor);
+      expect(module.adaptor({ token: '', troop: '', scout: '' })).to.be.an.instanceOf(Adaptor);
     });
   });
 

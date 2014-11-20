@@ -24,6 +24,8 @@ describe("Cylon.Adaptors.Pinoccio", function() {
   });
 
   describe("constructor", function() {
+    var error = "One or more of 'token', 'troop', or 'scout' was not specified for the Pinoccio adaptor. Cannot continue";
+
     it("sets @token to the provided token", function() {
       expect(adaptor.token).to.be.eql('token');
     });
@@ -34,6 +36,27 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
     it("sets @scout to the provided scout", function() {
       expect(adaptor.scout).to.be.eql('scout');
+    });
+
+    context("when 'token' is not specified", function() {
+      it('throws an error', function() {
+        var fn = function() { return new Adaptor({ troop: '', scout: '' }); };
+        expect(fn).to.throw(error)
+      });
+    });
+
+    context("when 'troop' is not specified", function() {
+      it('throws an error', function() {
+        var fn = function() { return new Adaptor({ token: '', scout: '' }); };
+        expect(fn).to.throw(error)
+      });
+    });
+
+    context("when 'scout' is not specified", function() {
+      it('throws an error', function() {
+        var fn = function() { return new Adaptor({ token: '', troop: '' }); };
+        expect(fn).to.throw(error)
+      });
     });
   });
 
