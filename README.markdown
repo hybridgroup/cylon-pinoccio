@@ -27,15 +27,18 @@ Install the module with: `npm install cylon-pinoccio`
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: {
-    name: 'pinoccio',
-    adaptor: 'pinoccio',
-    token: '[your token]',
-    troop: '[your troop ID]',
-    scout: '[your scout ID]'
+  connections: {
+    pinoccio: {
+      adaptor: 'pinoccio',
+      token: '[your token]',
+      troop: '[your troop ID]',
+      scout: '[your scout ID]'
+    }
   },
 
-  device: { name: 'led', driver: 'led', pin: 'D5' },
+  devices: {
+    led: { driver: 'led', pin: 'D5' }
+  },
 
   work: function(my) {
     every((1).second(), my.led.toggle);
@@ -51,18 +54,22 @@ You can also access the built-in features of the Pinoccio such as the LED and Po
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: {
-    name: 'pinoccio',
-    adaptor: 'pinoccio',
-    token: '[your token]',
-    troop: '[your troop ID]',
-    scout: '[your scout ID]' },
-  device: {name: 'led', driver: 'pinoccio-led'},
-  device: {name: 'power', driver: 'pinoccio-power'},
+  connections: {
+    pinoccio: {
+      adaptor: 'pinoccio',
+      token: '[your token]',
+      troop: '[your troop ID]',
+      scout: '[your scout ID]'
+    }
+  },
+
+  devices: {
+    led: { driver: 'pinoccio-led' },
+    power: { driver: 'pinoccio-power' },
+  },
 
   work: function(my) {
-    every((1).second(),
-    my.led.toggle);
+    every((1).second(), my.led.toggle);
   }
 }).start();
 ```
