@@ -1,15 +1,18 @@
 var Cylon = require('cylon');
 
 Cylon.robot({
-  connection: {
-    name: 'pinoccio',
-    adaptor: 'pinoccio',
-    token: 'XXX',
-    troop: '1',
-    scout: '1'
+  connections: {
+    pinoccio: {
+      adaptor: 'pinoccio',
+      token: 'SECRET_TOKEN',
+      troop: '1',
+      scout: '1'
+    }
   },
 
-  device: { name: 'power', driver: 'pinoccio-power' },
+  devices: {
+    power: { driver: 'pinoccio-power' }
+  },
 
   work: function(my) {
     every((3).seconds(), function() {
