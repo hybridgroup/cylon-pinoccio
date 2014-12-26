@@ -15,11 +15,13 @@ https://github.com/hybridgroup/cylon
 
 [![Build Status](https://secure.travis-ci.org/hybridgroup/cylon-pinoccio.png?branch=master)](http://travis-ci.org/hybridgroup/cylon-pinoccio) [![Code Climate](https://codeclimate.com/github/hybridgroup/cylon-pinoccio/badges/gpa.svg)](https://codeclimate.com/github/hybridgroup/cylon-pinoccio) [![Test Coverage](https://codeclimate.com/github/hybridgroup/cylon-pinoccio/badges/coverage.svg)](https://codeclimate.com/github/hybridgroup/cylon-pinoccio)
 
-## Getting Started
+## How to Install
 
-Install the module with: `npm install cylon-pinoccio`
+Install the module with:
 
-## Examples
+    $ npm install cylon-pinoccio
+
+## How to Use
 
 ### Blink
 
@@ -79,25 +81,24 @@ We currently have drivers for the following built-in Pinoccio devices:
 - LED
 - Power
 
-## Connecting
+## How to Connect
 
 You need to have an access token generated using the Pinoccio cloud. The easiest way to do this is to use curl:
-```
-curl -X POST -v --data 'email=your@email.com&password=yourpassword' https://api.pinocc.io/v1/login
-```
+
+    curl -X POST -v --data 'email=your@email.com&password=yourpassword' https://api.pinocc.io/v1/login
 
 It will return a JSON payload that contains the access token:
-```
-< HTTP/1.1 200 OK
-< content-type: application/json
-< Date: Sat, 21 Jun 2014 16:08:05 GMT
-< Connection: close
-< Transfer-Encoding: chunked
-<
-{"data":{"token":"thisisthetokenhere","account":1234,"perms":true}}
-```
+
+    < HTTP/1.1 200 OK
+    < content-type: application/json
+    < Date: Sat, 21 Jun 2014 16:08:05 GMT
+    < Connection: close
+    < Transfer-Encoding: chunked
+    <
+    {"data":{"token":"thisisthetokenhere","account":1234,"perms":true}}
 
 ## Documentation
+
 We're busy adding documentation to our web site at http://cylonjs.com/ please check there as we continue to work on Cylon.js
 
 Thank you!
