@@ -1,6 +1,8 @@
-'use strict';
+// jshint expr:true
+// jshint quotmark:false
+"use strict";
 
-var Cylon = require('cylon');
+var Cylon = require("cylon");
 
 var Power = source("pinoccio-power");
 
@@ -21,13 +23,13 @@ describe("Cylon.Drivers.PinoccioPower", function() {
   describe("#commands", function() {
     it("is an object containing Power commands", function() {
       for (var c in power.commands) {
-        expect(power.commands[c]).to.be.a('function');
+        expect(power.commands[c]).to.be.a("function");
       }
     });
   });
 
   describe("#isCharging", function() {
-    it("tells the connection to print whether or not it's charging", function() {
+    it("tells the connection to print if it's charging", function() {
       var callback = spy();
       power.isCharging(callback);
       expect(power.connection.command).to.be.calledWith(

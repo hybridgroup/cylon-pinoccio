@@ -1,9 +1,8 @@
-'use strict';
+/* jshint expr:true */
+"use strict";
 
-var Cylon = require('cylon'),
-    PinoccioIO = require('pinoccio-io');
-
-var EventEmitter = require('events').EventEmitter;
+var Cylon = require("cylon"),
+    PinoccioIO = require("pinoccio-io");
 
 var Adaptor = source("adaptor");
 
@@ -12,10 +11,10 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
   beforeEach(function() {
     adaptor = new Adaptor({
-      token: 'token',
-      troop: 'troop',
-      scout: 'scout'
-    })
+      token: "token",
+      troop: "troop",
+      scout: "scout"
+    });
   });
 
   it("subclasses Cylon.Adaptor", function() {
@@ -24,38 +23,39 @@ describe("Cylon.Adaptors.Pinoccio", function() {
   });
 
   describe("constructor", function() {
-    var error = "One or more of 'token', 'troop', or 'scout' was not specified for the Pinoccio adaptor. Cannot continue";
+    var error = "One or more of 'token', 'troop', or 'scout' was not specified";
+    error += " for the Pinoccio adaptor. Cannot continue";
 
     it("sets @token to the provided token", function() {
-      expect(adaptor.token).to.be.eql('token');
+      expect(adaptor.token).to.be.eql("token");
     });
 
     it("sets @troop to the provided troop", function() {
-      expect(adaptor.troop).to.be.eql('troop');
+      expect(adaptor.troop).to.be.eql("troop");
     });
 
     it("sets @scout to the provided scout", function() {
-      expect(adaptor.scout).to.be.eql('scout');
+      expect(adaptor.scout).to.be.eql("scout");
     });
 
     context("when 'token' is not specified", function() {
-      it('throws an error', function() {
-        var fn = function() { return new Adaptor({ troop: '', scout: '' }); };
-        expect(fn).to.throw(error)
+      it("throws an error", function() {
+        var fn = function() { return new Adaptor({ troop: "", scout: "" }); };
+        expect(fn).to.throw(error);
       });
     });
 
     context("when 'troop' is not specified", function() {
-      it('throws an error', function() {
-        var fn = function() { return new Adaptor({ token: '', scout: '' }); };
-        expect(fn).to.throw(error)
+      it("throws an error", function() {
+        var fn = function() { return new Adaptor({ token: "", scout: "" }); };
+        expect(fn).to.throw(error);
       });
     });
 
     context("when 'scout' is not specified", function() {
-      it('throws an error', function() {
-        var fn = function() { return new Adaptor({ token: '', troop: '' }); };
-        expect(fn).to.throw(error)
+      it("throws an error", function() {
+        var fn = function() { return new Adaptor({ token: "", troop: "" }); };
+        expect(fn).to.throw(error);
       });
     });
   });
@@ -75,9 +75,9 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
     context("when the board is ready", function() {
       it("triggers the callback", function() {
-        adaptor.board.emit('ready');
+        adaptor.board.emit("ready");
         expect(callback).to.be.called;
-      })
+      });
     });
   });
 
@@ -85,11 +85,11 @@ describe("Cylon.Adaptors.Pinoccio", function() {
     beforeEach(function() {
         adaptor.board = {
           MODES: {
-            INPUT:  'input',
-            OUTPUT: 'output',
-            ANALOG: 'analog',
-            PWM:    'pwm',
-            SERVO:  'servo'
+            INPUT:  "input",
+            OUTPUT: "output",
+            ANALOG: "analog",
+            PWM:    "pwm",
+            SERVO:  "servo"
           },
 
           pinMode: spy(),
@@ -110,17 +110,17 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
       beforeEach(function() {
         callback = spy();
-        board = adaptor.board
+        board = adaptor.board;
 
-        adaptor.digitalRead('10', callback);
+        adaptor.digitalRead("10", callback);
       });
 
       it("sets the board's pin mode to 'input'", function() {
-        expect(board.pinMode).to.be.calledWith('10', 'input');
+        expect(board.pinMode).to.be.calledWith("10", "input");
       });
 
       it("tells the board to read from the pin", function() {
-        expect(board.digitalRead).to.be.calledWith('10', callback);
+        expect(board.digitalRead).to.be.calledWith("10", callback);
       });
     });
 
@@ -129,15 +129,15 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
       beforeEach(function() {
         board = adaptor.board;
-        adaptor.digitalWrite('10', 1);
+        adaptor.digitalWrite("10", 1);
       });
 
       it("sets the board's pin mode to 'output'", function() {
-        expect(board.pinMode).to.be.calledWith('10', 'output');
+        expect(board.pinMode).to.be.calledWith("10", "output");
       });
 
       it("tells the board to write to the pin", function() {
-        expect(board.digitalWrite).to.be.calledWith('10', 1);
+        expect(board.digitalWrite).to.be.calledWith("10", 1);
       });
     });
 
@@ -146,17 +146,17 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
       beforeEach(function() {
         callback = spy();
-        board = adaptor.board
+        board = adaptor.board;
 
-        adaptor.analogRead('10', callback);
+        adaptor.analogRead("10", callback);
       });
 
       it("sets the board's pin mode to 'analog'", function() {
-        expect(board.pinMode).to.be.calledWith('10', 'analog');
+        expect(board.pinMode).to.be.calledWith("10", "analog");
       });
 
       it("tells the board to read from the pin", function() {
-        expect(board.analogRead).to.be.calledWith('10', callback);
+        expect(board.analogRead).to.be.calledWith("10", callback);
       });
     });
 
@@ -165,15 +165,15 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
       beforeEach(function() {
         board = adaptor.board;
-        adaptor.analogWrite('10', 1);
+        adaptor.analogWrite("10", 1);
       });
 
       it("sets the board's pin mode to 'analog'", function() {
-        expect(board.pinMode).to.be.calledWith('10', 'analog');
+        expect(board.pinMode).to.be.calledWith("10", "analog");
       });
 
       it("tells the board to write to the pin", function() {
-        expect(board.analogWrite).to.be.calledWith('10', 255);
+        expect(board.analogWrite).to.be.calledWith("10", 255);
       });
     });
 
@@ -182,15 +182,15 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
       beforeEach(function() {
         board = adaptor.board;
-        adaptor.pwmWrite('10', 1);
+        adaptor.pwmWrite("10", 1);
       });
 
       it("sets the board's pin mode to 'pwm'", function() {
-        expect(board.pinMode).to.be.calledWith('10', 'pwm');
+        expect(board.pinMode).to.be.calledWith("10", "pwm");
       });
 
       it("tells the board to write to the pin", function() {
-        expect(board.analogWrite).to.be.calledWith('10', 255);
+        expect(board.analogWrite).to.be.calledWith("10", 255);
       });
     });
 
@@ -199,15 +199,15 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
       beforeEach(function() {
         board = adaptor.board;
-        adaptor.servoWrite('10', 1);
+        adaptor.servoWrite("10", 1);
       });
 
       it("sets the board's pin mode to 'servo'", function() {
-        expect(board.pinMode).to.be.calledWith('10', 'servo');
+        expect(board.pinMode).to.be.calledWith("10", "servo");
       });
 
       it("tells the board to write to the pin", function() {
-        expect(board.servoWrite).to.be.calledWith('10', 180);
+        expect(board.servoWrite).to.be.calledWith("10", 180);
       });
     });
   });
@@ -215,13 +215,13 @@ describe("Cylon.Adaptors.Pinoccio", function() {
   describe("#pinVal", function() {
     context("if the value is 1", function() {
       it("returns 'HIGH'", function() {
-        expect(adaptor.pinVal(1)).to.be.eql('HIGH');
+        expect(adaptor.pinVal(1)).to.be.eql("HIGH");
       });
     });
 
     context("if the value is not 1", function() {
       it("returns 'LOW'", function() {
-        expect(adaptor.pinVal(0)).to.be.eql('LOW');
+        expect(adaptor.pinVal(0)).to.be.eql("LOW");
       });
     });
   });
@@ -237,15 +237,15 @@ describe("Cylon.Adaptors.Pinoccio", function() {
       var callback = spy();
       adaptor.command("hello", callback);
       expect(board.command).to.be.calledWith("hello", callback);
-    })
+    });
 
     context("if no callback is provided", function() {
       it("substitutes a no-op function", function() {
         adaptor.command("hello");
         var args = board.command.firstCall.args;
 
-        expect(args[0]).to.be.eql('hello');
-        expect(args[1]).to.be.a('function');
+        expect(args[0]).to.be.eql("hello");
+        expect(args[1]).to.be.a("function");
       });
     });
   });
