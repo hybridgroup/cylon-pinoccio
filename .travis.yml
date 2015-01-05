@@ -3,7 +3,7 @@ node_js: '0.10'
 install:
   - npm install
   - npm install git://github.com/hybridgroup/cylon.git
-  - npm install -g istanbul codeclimate-test-reporter
+  - npm install -g jshint istanbul codeclimate-test-reporter
 script:
-  - make cover
+  - make ci
   - CODECLIMATE_REPO_TOKEN=b7ca04d1082b1fbe2a0a6c6676ab4c270d1e4093a4fbd34f8678e775264edf9c codeclimate < coverage/lcov.info
