@@ -19,7 +19,7 @@ https://github.com/hybridgroup/cylon
 
 Install the module with:
 
-    $ npm install cylon-pinoccio
+    $ npm install cylon cylon-pinoccio
 
 ## How to Use
 
