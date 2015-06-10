@@ -10,7 +10,22 @@
     "type": "git",
     "url": "https://github.com/hybridgroup/cylon-pinoccio"
   },
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
+
+  "keywords": [
+    "cylon",
+    "cylonjs",
+    "cylons",
+    "robot",
+    "robots",
+    "robotics",
+    "iot",
+    "hardware",
+    "gpio",
+    "mesh",
+    "pinoccio"
+  ],
+
   "devDependencies": {
     "sinon-chai": "2.5.0",
     "chai": "1.9.1",
