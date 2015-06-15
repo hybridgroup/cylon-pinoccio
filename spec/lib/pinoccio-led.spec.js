@@ -1,9 +1,8 @@
-/* jshint expr:true */
 "use strict";
 
 var Cylon = require("cylon");
 
-var LED = source("pinoccio-led");
+var LED = lib("pinoccio-led");
 
 describe("Pinoccio-LED", function() {
   var led;

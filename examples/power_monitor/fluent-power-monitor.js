@@ -17,7 +17,9 @@ Cylon
     bot.led.blue();
 
     every((2).seconds(), function() {
-      bot.power.percent(function(err, data){
+      bot.power.percent(function(err, data) {
+        if (err) { console.error(err); }
+
         if (data < 10) {
           bot.led.red();
         } else if (data < 20) {

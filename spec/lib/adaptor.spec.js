@@ -1,10 +1,9 @@
-/* jshint expr:true */
 "use strict";
 
 var Cylon = require("cylon"),
     PinoccioIO = require("pinoccio-io");
 
-var Adaptor = source("adaptor");
+var Adaptor = lib("adaptor");
 
 describe("Cylon.Adaptors.Pinoccio", function() {
   var adaptor;
@@ -83,26 +82,26 @@ describe("Cylon.Adaptors.Pinoccio", function() {
 
   describe("read/write functions", function() {
     beforeEach(function() {
-        adaptor.board = {
-          MODES: {
-            INPUT:  "input",
-            OUTPUT: "output",
-            ANALOG: "analog",
-            PWM:    "pwm",
-            SERVO:  "servo"
-          },
+      adaptor.board = {
+        MODES: {
+          INPUT: "input",
+          OUTPUT: "output",
+          ANALOG: "analog",
+          PWM: "pwm",
+          SERVO: "servo"
+        },
 
-          pinMode: spy(),
+        pinMode: spy(),
 
-          digitalRead: spy(),
-          digitalWrite: spy(),
+        digitalRead: spy(),
+        digitalWrite: spy(),
 
-          analogRead: spy(),
-          analogWrite: spy(),
+        analogRead: spy(),
+        analogWrite: spy(),
 
-          pwmWrite: spy(),
-          servoWrite: spy()
-        };
+        pwmWrite: spy(),
+        servoWrite: spy()
+      };
     });
 
     describe("#digitalRead", function() {

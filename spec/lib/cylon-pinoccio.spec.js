@@ -1,13 +1,12 @@
-/* jshint expr:true */
 "use strict";
 
-var pinoccio = source("cylon-pinoccio");
+var pinoccio = lib("cylon-pinoccio");
 
-var Adaptor = source("adaptor");
+var Adaptor = lib("adaptor");
 
 var Drivers = {
-  LED: source("pinoccio-led"),
-  Power: source("pinoccio-power")
+  LED: lib("pinoccio-led"),
+  Power: lib("pinoccio-power")
 };
 
 describe("Cylon.Pinoccio", function() {

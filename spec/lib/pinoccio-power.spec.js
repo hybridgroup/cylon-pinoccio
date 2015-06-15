@@ -1,10 +1,8 @@
-// jshint expr:true
-// jshint quotmark:false
 "use strict";
 
 var Cylon = require("cylon");
 
-var Power = source("pinoccio-power");
+var Power = lib("pinoccio-power");
 
 describe("Cylon.Drivers.PinoccioPower", function() {
   var power;
