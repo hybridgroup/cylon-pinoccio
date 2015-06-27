@@ -1,6 +1,6 @@
 "use strict";
 
-var pinoccio = lib("cylon-pinoccio");
+var pinoccio = lib("../");
 
 var Adaptor = lib("adaptor");
 
